@@ -38,7 +38,9 @@ export const MoodTracker: React.FC<MoodPickerProps> = ({
                 : undefined,
             ]}
           >
-            <Text key={option.emoji}>{option.emoji}</Text>
+            <Text style={styles.emoji} key={option.emoji}>
+              {option.emoji}
+            </Text>
           </Pressable>
           <Text style={styles.descriptionText}>
             {option.emoji === selectedMood?.emoji
@@ -66,6 +68,9 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     flexWrap: 'wrap',
   },
+  emoji: {
+    fontSize: 30,
+  },
   moodItem: {
     height: 60,
     width: 60,
@@ -88,7 +93,7 @@ const styles = StyleSheet.create({
   text: {
     padding: 10,
     width: '100%',
-    fontSize: 12,
+    fontSize: 16,
     fontWeight: 'bold',
     textAlign: 'center',
   },
@@ -107,6 +112,8 @@ const styles = StyleSheet.create({
     backgroundColor: theme.colorPurple,
     padding: 10,
     borderRadius: 30,
+    fontSize: 16,
+    fontWeight: 'bold',
     color: theme.colorWhite,
   },
 });
