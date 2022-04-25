@@ -1,6 +1,8 @@
+import { format } from 'date-fns';
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { MoodOptionType, MoodOptionWithTimestamp } from '../../types';
+import { MoodItemRow } from '../components/MoodItemRow';
 import { MoodTracker } from '../components/MoodTracker';
 
 export const Home: React.FC = () => {
@@ -16,11 +18,7 @@ export const Home: React.FC = () => {
     <View style={styles.container}>
       <MoodTracker handleSelectMood={handleSelectMood} />
       {moodList.map((item) => (
-        <Text key={item.timestamp}>
-          <>
-            {item.mood.emoji} {new Date(item.timestamp).toString()}
-          </>
-        </Text>
+        <MoodItemRow key={item.timestamp} item={item} />
       ))}
     </View>
   );
