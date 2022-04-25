@@ -10,9 +10,20 @@ const moodOptions: MoodOptionType[] = [
   { emoji: '😐', description: 'neutral' },
   { emoji: '😥', description: 'sad' },
 ];
+type MoodPickerProps = {
+  handleSelectMood: (moodOption: MoodOptionType) => void;
+};
 
-export const MoodTracker = () => {
+export const MoodTracker: React.FC<MoodPickerProps> = ({
+  handleSelectMood,
+}) => {
   const [selectedMood, setSelectedMood] = React.useState<MoodOptionType>();
+  const handleSelect = React.useCallback(() => {
+    if (selectedMood) {
+      handleSelectMood(selectedMood);
+      setSelectedMood(undefined);
+    }
+  }, [handleSelectMood, selectedMood]);
   return (
     <View style={styles.moodOptions}>
       <Text style={styles.text}>How are you right now ?</Text>
@@ -36,8 +47,10 @@ export const MoodTracker = () => {
           </Text>
         </View>
       ))}
-      <View>
-        <Button onPress={() => {}} title="Choose" color={theme.colorPurple} />
+      <View style={styles.btnArea}>
+        <Pressable style={styles.container} onPress={handleSelect}>
+          <Text style={styles.buttonText}>Choose</Text>
+        </Pressable>
       </View>
     </View>
   );
@@ -78,5 +91,22 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontWeight: 'bold',
     textAlign: 'center',
+  },
+  btnArea: {
+    display: 'flex',
+    justifyContent: 'center',
+    width: '100%',
+  },
+  container: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
+  buttonText: {
+    marginVertical: 20,
+    backgroundColor: theme.colorPurple,
+    padding: 10,
+    borderRadius: 30,
+    color: theme.colorWhite,
   },
 });
