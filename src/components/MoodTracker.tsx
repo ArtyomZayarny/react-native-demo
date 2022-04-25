@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Text, Pressable, Button } from 'react-native';
+import { StyleSheet, View, Text, Pressable } from 'react-native';
 import { MoodOptionType } from '../../types';
 import { theme } from '../theme';
 
@@ -25,32 +25,35 @@ export const MoodTracker: React.FC<MoodPickerProps> = ({
     }
   }, [handleSelectMood, selectedMood]);
   return (
-    <View style={styles.moodOptions}>
+    <View style={styles.moodBlock}>
       <Text style={styles.text}>How are you right now ?</Text>
-      {moodOptions.map((option) => (
-        <View>
-          <Pressable
-            onPress={() => setSelectedMood(option)}
-            style={[
-              styles.moodItem,
-              selectedMood?.emoji === option.emoji
-                ? styles.selectedMoodItem
-                : undefined,
-            ]}
-          >
-            <Text style={styles.emoji} key={option.emoji}>
-              {option.emoji}
+      <View style={styles.moodOptionList}>
+        {moodOptions.map((option) => (
+          <View key={option.emoji}>
+            <Pressable
+              onPress={() => setSelectedMood(option)}
+              style={[
+                styles.moodItem,
+                selectedMood?.emoji === option.emoji
+                  ? styles.selectedMoodItem
+                  : undefined,
+              ]}
+            >
+              <Text style={styles.emoji} key={option.emoji}>
+                {option.emoji}
+              </Text>
+            </Pressable>
+            <Text style={styles.descriptionText}>
+              {option.emoji === selectedMood?.emoji
+                ? option.description
+                : undefined}
             </Text>
-          </Pressable>
-          <Text style={styles.descriptionText}>
-            {option.emoji === selectedMood?.emoji
-              ? option.description
-              : undefined}
-          </Text>
-        </View>
-      ))}
-      <View style={styles.btnArea}>
-        <Pressable style={styles.container} onPress={handleSelect}>
+          </View>
+        ))}
+      </View>
+
+      <View style={styles.container}>
+        <Pressable onPress={handleSelect}>
           <Text style={styles.buttonText}>Choose</Text>
         </Pressable>
       </View>
@@ -58,9 +61,12 @@ export const MoodTracker: React.FC<MoodPickerProps> = ({
   );
 };
 const styles = StyleSheet.create({
-  moodOptions: {
+  moodOptionList: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+  },
+  moodBlock: {
+    flexDirection: 'column',
     paddingHorizontal: 20,
     borderWidth: 2,
     borderColor: theme.colorPurple,
@@ -97,13 +103,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
   },
-  btnArea: {
-    display: 'flex',
-    justifyContent: 'center',
-    width: '100%',
-  },
   container: {
-    flex: 1,
     flexDirection: 'row',
     justifyContent: 'center',
   },
@@ -111,6 +111,7 @@ const styles = StyleSheet.create({
     marginVertical: 20,
     backgroundColor: theme.colorPurple,
     padding: 10,
+    paddingHorizontal: 20,
     borderRadius: 30,
     fontSize: 16,
     fontWeight: 'bold',

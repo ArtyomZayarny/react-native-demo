@@ -33,6 +33,7 @@ const styles = StyleSheet.create({
   },
   iconAndDescription: {
     flexDirection: 'row',
+    alignItems:'center',
   },
   moodValue: {
     fontSize: 30,
