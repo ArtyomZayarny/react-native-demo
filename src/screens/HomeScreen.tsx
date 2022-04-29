@@ -2,24 +2,15 @@ import { format } from 'date-fns';
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { MoodOptionType, MoodOptionWithTimestamp } from '../../types';
+import { useAppContext } from '../App.provider';
 import { MoodItemRow } from '../components/MoodItemRow';
 import { MoodTracker } from '../components/MoodTracker';
 
 export const Home: React.FC = () => {
-  const [moodList, setMoodList] = React.useState<MoodOptionWithTimestamp[]>([]);
-
-  const handleSelectMood = React.useCallback((selectedMood: MoodOptionType) => {
-    setMoodList((current) => [
-      ...current,
-      { mood: selectedMood, timestamp: Date.now() },
-    ]);
-  }, []);
+  const appContext = useAppContext();
   return (
     <View style={styles.container}>
-      <MoodTracker handleSelectMood={handleSelectMood} />
-      {moodList.map((item) => (
-        <MoodItemRow key={item.timestamp} item={item} />
-      ))}
+      <MoodTracker handleSelectMood={appContext.handleSelectMood} />
     </View>
   );
 };

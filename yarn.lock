@@ -4588,6 +4588,11 @@ react-native-screens@^3.13.1:
     react-freeze "^1.0.0"
     warn-once "^0.1.0"
 
+react-native-sync-storage@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/react-native-sync-storage/-/react-native-sync-storage-1.0.0.tgz#b8963bf5e4fc631bc196b55ecaeb8ff2f5f32d10"
+  integrity sha1-uJY79eT8YxvBlrVeyuuP8vXzLRA=
+
 react-native-web@0.17.1:
   version "0.17.1"
   resolved "https://registry.yarnpkg.com/react-native-web/-/react-native-web-0.17.1.tgz#90d473c89dd99b88bc9830b2a9fcdd2fc5f04902"
