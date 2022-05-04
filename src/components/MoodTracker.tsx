@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Text, Pressable } from 'react-native';
+import { StyleSheet, View, Text, Pressable, Image } from 'react-native';
 import { MoodOptionType } from '../../types';
 import { theme } from '../theme';
 
@@ -10,6 +10,7 @@ const moodOptions: MoodOptionType[] = [
   { emoji: '😐', description: 'neutral' },
   { emoji: '😥', description: 'sad' },
 ];
+const imgSrc = require('../../assets/ps.png');
 type MoodPickerProps = {
   handleSelectMood: (moodOption: MoodOptionType) => void;
 };
@@ -18,12 +19,27 @@ export const MoodTracker: React.FC<MoodPickerProps> = ({
   handleSelectMood,
 }) => {
   const [selectedMood, setSelectedMood] = React.useState<MoodOptionType>();
+  const [hasSelected, setHasSelected] = React.useState(false);
   const handleSelect = React.useCallback(() => {
     if (selectedMood) {
       handleSelectMood(selectedMood);
       setSelectedMood(undefined);
+      setHasSelected(true);
     }
   }, [handleSelectMood, selectedMood]);
+
+  if (hasSelected) {
+    return (
+      <View style={styles.moodBlock}>
+        <Image source={imgSrc} style={styles.tinyLogo} />
+        <View style={styles.container}>
+          <Pressable onPress={() => setHasSelected(false)}>
+            <Text style={styles.buttonText}>Choose another</Text>
+          </Pressable>
+        </View>
+      </View>
+    );
+  }
   return (
     <View style={styles.moodBlock}>
       <Text style={styles.text}>How are you right now ?</Text>
@@ -116,5 +132,11 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
     color: theme.colorWhite,
+  },
+  tinyLogo: {
+    marginTop: 20,
+    width: 70,
+    height: 50,
+    alignSelf: 'center',
   },
 });

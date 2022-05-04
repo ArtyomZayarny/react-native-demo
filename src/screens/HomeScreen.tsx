@@ -1,9 +1,6 @@
-import { format } from 'date-fns';
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-import { MoodOptionType, MoodOptionWithTimestamp } from '../../types';
+import { View, StyleSheet } from 'react-native';
 import { useAppContext } from '../App.provider';
-import { MoodItemRow } from '../components/MoodItemRow';
 import { MoodTracker } from '../components/MoodTracker';
 
 export const Home: React.FC = () => {
