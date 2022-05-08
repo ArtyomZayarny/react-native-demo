@@ -89,6 +89,8 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
     borderRadius: 10,
     flexWrap: 'wrap',
+    backgroundColor: 'rgba(255,255,255,0.2)',
+    backdropFilter: 'blur(2px);',
   },
   emoji: {
     fontSize: 30,
@@ -109,7 +111,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
     fontSize: 10,
-    color: '#454C73',
+    color: theme.colorWhite,
     padding: 5,
   },
   text: {
@@ -118,6 +120,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
     textAlign: 'center',
+    color: theme.colorWhite,
   },
   container: {
     flexDirection: 'row',
