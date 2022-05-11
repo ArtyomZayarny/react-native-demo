@@ -31,7 +31,10 @@ export const MoodTracker: React.FC<MoodPickerProps> = ({
   if (hasSelected) {
     return (
       <View style={styles.moodBlock}>
-        <Image source={imgSrc} style={styles.tinyLogo} />
+        <View style={styles.imgWrap}>
+          <Image source={imgSrc} style={styles.tinyLogo} />
+        </View>
+
         <View style={styles.container}>
           <Pressable onPress={() => setHasSelected(false)}>
             <Text style={styles.buttonText}>Choose another</Text>
@@ -77,20 +80,24 @@ export const MoodTracker: React.FC<MoodPickerProps> = ({
   );
 };
 const styles = StyleSheet.create({
+  imgWrap: {
+    display: 'flex',
+  },
   moodOptionList: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+    height: 86,
   },
   moodBlock: {
+    height: 250,
     flexDirection: 'column',
     paddingHorizontal: 20,
     borderWidth: 2,
     borderColor: theme.colorPurple,
     marginHorizontal: 10,
     borderRadius: 10,
-    flexWrap: 'wrap',
+    justifyContent: 'space-evenly',
     backgroundColor: 'rgba(255,255,255,0.2)',
-    backdropFilter: 'blur(2px);',
   },
   emoji: {
     fontSize: 30,
@@ -113,6 +120,7 @@ const styles = StyleSheet.create({
     fontSize: 10,
     color: theme.colorWhite,
     padding: 5,
+    fontFamily: theme.fontFamilyRegular,
   },
   text: {
     padding: 10,
@@ -121,6 +129,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
     color: theme.colorWhite,
+    fontFamily: theme.fontFamilyBold,
   },
   container: {
     flexDirection: 'row',
@@ -135,6 +144,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
     color: theme.colorWhite,
+    fontFamily: theme.fontFamilyBold,
   },
   tinyLogo: {
     marginTop: 20,

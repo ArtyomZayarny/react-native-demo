@@ -15,6 +15,9 @@ export const BottomTabsNavigator: React.FC = () => {
   return (
     <BottomTabs.Navigator
       screenOptions={({ route }) => ({
+        headerTitleStyle: {
+          fontFamily: theme.fontFamilyRegular,
+        },
         tabBarActiveTintColor: theme.colorBlue,
         tabBarInactiveTintColor: theme.colorGrey,
         tabBarShowLabel: false,
@@ -45,6 +48,7 @@ export const BottomTabsNavigator: React.FC = () => {
         component={Historty}
         options={{
           title: 'Past Moods',
+          headerTitleAlign: 'center',
         }}
       />
       <BottomTabs.Screen
@@ -52,6 +56,7 @@ export const BottomTabsNavigator: React.FC = () => {
         component={Analytics}
         options={{
           title: 'Fancy',
+          headerTitleAlign: 'center',
         }}
       />
     </BottomTabs.Navigator>

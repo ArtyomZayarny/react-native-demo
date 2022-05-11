@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
   },
   iconAndDescription: {
     flexDirection: 'row',
-    alignItems:'center',
+    alignItems: 'center',
   },
   moodValue: {
     fontSize: 30,
@@ -44,10 +44,12 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     alignItems: 'center',
     display: 'flex',
+    fontFamily: theme.fontFamilyBold,
   },
   moodDate: {
     color: theme.colorLavender,
     fontSize: 12,
     fontWeight: 'bold',
+    fontFamily: theme.fontFamilyRegular,
   },
 });
