@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, View, Text, Pressable, Image } from 'react-native';
 import { MoodOptionType } from '../../types';
 import { theme } from '../theme';
@@ -34,7 +34,6 @@ export const MoodTracker: React.FC<MoodPickerProps> = ({
         <View style={styles.imgWrap}>
           <Image source={imgSrc} style={styles.tinyLogo} />
         </View>
-
         <View style={styles.container}>
           <Pressable onPress={() => setHasSelected(false)}>
             <Text style={styles.buttonText}>Choose another</Text>
@@ -111,13 +110,12 @@ const styles = StyleSheet.create({
   },
   selectedMoodItem: {
     borderWidth: 2,
-    borderColor: '#fff',
-    backgroundColor: '#454C73',
+    borderColor: theme.colorWhite,
+    backgroundColor: theme.selectedColor,
   },
   descriptionText: {
-    fontWeight: 'bold',
     textAlign: 'center',
-    fontSize: 10,
+    fontSize: 14,
     color: theme.colorWhite,
     padding: 5,
     fontFamily: theme.fontFamilyRegular,
@@ -125,11 +123,10 @@ const styles = StyleSheet.create({
   text: {
     padding: 10,
     width: '100%',
-    fontSize: 16,
-    fontWeight: 'bold',
+    fontSize: 18,
     textAlign: 'center',
     color: theme.colorWhite,
-    fontFamily: theme.fontFamilyBold,
+    fontFamily: theme.fontFamilyRegular,
   },
   container: {
     flexDirection: 'row',
@@ -142,7 +139,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     borderRadius: 30,
     fontSize: 16,
-    fontWeight: 'bold',
     color: theme.colorWhite,
     fontFamily: theme.fontFamilyBold,
   },

@@ -1,5 +1,6 @@
 export const theme = {
   colorPurple: '#FF8C00',
+  selectedColor: '#556b2f',
   colorWhite: '#fff',
   colorLavender: '#87677B',
   colorGrey: '#BEBEBE',
