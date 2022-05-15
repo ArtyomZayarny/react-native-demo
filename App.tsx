@@ -5,8 +5,13 @@ import { AppProvider } from './src/App.provider';
 import { BottomTabsNavigator } from './src/navigation/BottomTabs.navigator';
 import * as Font from 'expo-font';
 import AppLoading from 'expo-app-loading';
-import { theme } from './src/theme';
+import { Platform, UIManager } from 'react-native';
 
+if (Platform.OS === 'android') {
+  if (UIManager.setLayoutAnimationEnabledExperimental) {
+    UIManager.setLayoutAnimationEnabledExperimental(true);
+  }
+}
 const fetchFonts = () => {
   return Font.loadAsync({
     'Kalam-Bold': require('./assets/fonts/Kalam-Bold.ttf'),

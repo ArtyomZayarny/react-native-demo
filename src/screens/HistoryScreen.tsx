@@ -7,9 +7,12 @@ export const Historty: React.FC = () => {
   const appContext = useAppContext();
   return (
     <ScrollView>
-      {appContext.moodList.map((item) => (
-        <MoodItemRow key={item.timestamp} item={item} />
-      ))}
+      {appContext.moodList
+        .slice()
+        .reverse()
+        .map((item) => (
+          <MoodItemRow key={item.timestamp} item={item} />
+        ))}
     </ScrollView>
   );
 };
